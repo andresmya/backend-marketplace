@@ -6,6 +6,7 @@ import java.util.List;
 
 @Data
 public class Role {
+    private Integer id;
     private String name;
     private List<Privilege> privileges;
 }

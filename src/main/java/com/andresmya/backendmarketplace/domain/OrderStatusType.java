@@ -1,6 +1,9 @@
 package com.andresmya.backendmarketplace.domain;
 
-public enum OrderStatusType {
-    OPEN,
-    CLOSED
+import lombok.Data;
+
+@Data
+public class OrderStatusType {
+    private Integer id;
+    private String name;
 }

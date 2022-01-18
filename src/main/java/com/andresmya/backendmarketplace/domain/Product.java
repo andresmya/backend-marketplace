@@ -13,7 +13,7 @@ public class Product {
     private BigDecimal price;
     private Integer stock;
     private Category category;
-    private String vendor;
+    private Vendor vendor;
     private Date updated_at;
     private Date created_at;
 }
