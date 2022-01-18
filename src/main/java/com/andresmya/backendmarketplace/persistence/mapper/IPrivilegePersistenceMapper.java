@@ -7,7 +7,7 @@ import org.mapstruct.Mapper;
 import java.util.List;
 
 @Mapper(componentModel = "spring")
-public interface IPrivilegeMapper {
+public interface IPrivilegePersistenceMapper {
     Privilege toPrivilege(PrivilegeEntity privilegeEntity);
     List<Privilege> toPrivileges(List<PrivilegeEntity> privilegeEntities);
 }

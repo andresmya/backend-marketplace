@@ -6,8 +6,8 @@ import org.mapstruct.Mapper;
 
 import java.util.List;
 
-@Mapper(componentModel = "spring", uses = IRoleMapper.class)
-public interface IUserMapper {
+@Mapper(componentModel = "spring", uses = IRolePersistenceMapper.class)
+public interface IUserPersistenceMapper {
     User toUser(UserEntity userEntity);
     List<User> toUsers(List<UserEntity> userEntities);
 }

@@ -6,8 +6,8 @@ import org.mapstruct.Mapper;
 
 import java.util.List;
 
-@Mapper(componentModel = "spring", uses = ICustomerAddressMapper.class)
-public interface IOrderMapper {
+@Mapper(componentModel = "spring", uses = ICustomerAddressPersistenceMapper.class)
+public interface IOrderPersistenceMapper {
     Order toOrder(OrderEntity orderEntity);
     List<Order> toOrders(List<OrderEntity> orderEntities);
 }

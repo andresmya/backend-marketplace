@@ -9,7 +9,7 @@ import org.mapstruct.Mapper;
 import java.util.List;
 
 @Mapper(componentModel = "spring")
-public interface ILocationMapper {
+public interface ILocationPersistenceMapper {
     List<State> toStates(List<StateEntity> stateEntities);
 
     City toCity(CityEntity city);

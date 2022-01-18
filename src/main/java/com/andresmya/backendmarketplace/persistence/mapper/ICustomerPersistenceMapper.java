@@ -7,7 +7,7 @@ import org.mapstruct.Mapper;
 import java.util.List;
 
 @Mapper(componentModel = "spring")
-public interface ICustomerMapper {
+public interface ICustomerPersistenceMapper {
     Customer toCustomer(CustomerEntity customerEntity);
     List<Customer> toCustomers(List<CustomerEntity> customerEntities);
 }

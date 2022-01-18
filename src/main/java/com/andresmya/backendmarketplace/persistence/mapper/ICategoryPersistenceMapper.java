@@ -7,7 +7,7 @@ import org.mapstruct.Mapper;
 import java.util.List;
 
 @Mapper(componentModel = "spring")
-public interface ICategoryMapper {
+public interface ICategoryPersistenceMapper {
     Category toCategory(CategoryEntity categoryEntity);
     List<Category> toCategories(List<CategoryEntity> categoryEntities);
 }

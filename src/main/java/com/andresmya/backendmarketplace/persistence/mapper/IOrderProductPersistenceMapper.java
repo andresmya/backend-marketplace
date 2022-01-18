@@ -6,8 +6,8 @@ import org.mapstruct.Mapper;
 
 import java.util.List;
 
-@Mapper(componentModel = "spring", uses = IProductMapper.class)
-public interface IOrderProductMapper {
+@Mapper(componentModel = "spring", uses = IProductPersistenceMapper.class)
+public interface IOrderProductPersistenceMapper {
     OrderProduct toOrderProduct(OrderProductEntity orderProductEntity);
     List<OrderProduct> toOrderProducts(List<OrderProductEntity> orderProductEntities);
 }

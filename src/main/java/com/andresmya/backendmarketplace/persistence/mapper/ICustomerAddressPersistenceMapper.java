@@ -6,8 +6,8 @@ import org.mapstruct.Mapper;
 
 import java.util.List;
 
-@Mapper(componentModel = "spring", uses = ILocationMapper.class)
-public interface ICustomerAddressMapper {
+@Mapper(componentModel = "spring", uses = ILocationPersistenceMapper.class)
+public interface ICustomerAddressPersistenceMapper {
     CustomerAddress toCustomerAddress(CustomerAddressEntity customerAddressEntity);
     List<CustomerAddress> toCustomerAddresses(List<CustomerAddressEntity> customerAddressEntities);
 }

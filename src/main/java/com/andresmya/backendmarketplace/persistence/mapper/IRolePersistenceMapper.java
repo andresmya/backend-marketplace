@@ -6,8 +6,8 @@ import org.mapstruct.Mapper;
 
 import java.util.List;
 
-@Mapper(componentModel = "spring", uses = {IPrivilegeMapper.class})
-public interface IRoleMapper {
+@Mapper(componentModel = "spring", uses = {IPrivilegePersistenceMapper.class})
+public interface IRolePersistenceMapper {
     Role toRole(RoleEntity roleEntity);
     List<Role> toRoles(List<RoleEntity> roleEntities);
 }

@@ -6,8 +6,8 @@ import org.mapstruct.Mapper;
 
 import java.util.List;
 
-@Mapper(componentModel = "spring", uses = IOrderStatusMapper.class)
-public interface IOrderTransactionMapper {
+@Mapper(componentModel = "spring", uses = IOrderStatusPersistenceMapper.class)
+public interface IOrderTransactionPersistenceMapper {
     OrderTransaction toOrderTransaction(OrderTransactionEntity orderTransactionEntity);
     List<OrderTransaction> toOrdersTransactions(List<OrderTransactionEntity> orderTransactionEntities);
 }
