@@ -26,8 +26,7 @@ public class AuthenticationService {
         authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(request.getEmail(), request.getPassword()));
         UserDetails userDetails = customUserDetailsService.loadUserByUsername(request.getEmail());
         String jwt = jwtUtil.generateToken(userDetails);
-        AuthenticationResponse response = new AuthenticationResponse(jwt, JwtUtil.getNewExpirationDate(), "username", new Role());
-        return response;
+        return new AuthenticationResponse(jwt, JwtUtil.getNewExpirationDate(), userDetails.getUsername());
     }
 
 

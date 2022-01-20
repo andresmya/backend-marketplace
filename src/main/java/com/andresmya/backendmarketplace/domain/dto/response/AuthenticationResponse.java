@@ -12,5 +12,4 @@ public class AuthenticationResponse {
     private String jwt;
     private Date expirationDate;
     private String username;
-    private Role role;
 }
