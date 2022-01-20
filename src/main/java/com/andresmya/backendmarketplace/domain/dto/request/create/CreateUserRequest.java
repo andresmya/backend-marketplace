@@ -1,4 +1,4 @@
-package com.andresmya.backendmarketplace.domain.dto.request;
+package com.andresmya.backendmarketplace.domain.dto.request.create;
 
 import lombok.Data;
 
