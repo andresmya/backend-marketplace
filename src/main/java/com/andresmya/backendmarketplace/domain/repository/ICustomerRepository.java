@@ -10,7 +10,8 @@ public interface ICustomerRepository {
     Customer createCustomer(Customer customer);
     Customer updateCustomer(Customer customer);
     Optional<Customer> getCustomerById(Integer id);
-    Optional<Customer> getCustomerByEmail(String email);
+    Optional<Customer> getCustomerByUserId(Integer id);
     Page<Customer> getAllCustomers(Pageable pageable);
     void deleteCustomerById(Integer id);
+    boolean existsById(Integer id);
 }

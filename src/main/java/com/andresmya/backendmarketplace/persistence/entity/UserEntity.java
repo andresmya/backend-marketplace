@@ -29,7 +29,7 @@ public class UserEntity {
     @JoinColumn(name = "role_id")
     private RoleEntity role;
     @Column(insertable = false, updatable = false)
-    private Date updated_at;
+    private Date updatedAt;
     @Column(insertable = false, updatable = false)
-    private Date created_at;
+    private Date createdAt;
 }

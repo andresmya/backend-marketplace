@@ -10,7 +10,8 @@ public interface IVendorRepository {
     Vendor createVendor(Vendor vendor);
     Vendor updateVendor(Vendor vendor);
     Optional<Vendor> getVendorById(Integer id);
-    Optional<Vendor> getVendorByEmail(String email);
+    Optional<Vendor> getVendorByUserId(Integer userId);
     Page<Vendor> getAllVendors(Pageable pageable);
     void deleteVendorById(Integer id);
+    boolean existsById(Integer id);
 }

@@ -13,5 +13,6 @@ public interface IUserRepository {
     Optional<User> getUserByEmail(String email);
     Page<User> getAllUsers(Pageable pageable);
     void deleteUserById(Integer id);
+    void deleteUser(User user);
     boolean existsByEmail(String email);
 }

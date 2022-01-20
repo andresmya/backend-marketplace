@@ -8,6 +8,7 @@ import java.util.Date;
 public class Vendor {
     private Integer id;
     private String name;
-    private Date updated_at;
-    private Date created_at;
+    private User user;
+    private Date updatedAt;
+    private Date createdAt;
 }

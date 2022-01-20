@@ -12,6 +12,6 @@ public class User {
     @JsonIgnore
     private String password;
     private Role role;
-    private Date updated_at;
-    private Date created_at;
+    private Date updatedAt;
+    private Date createdAt;
 }

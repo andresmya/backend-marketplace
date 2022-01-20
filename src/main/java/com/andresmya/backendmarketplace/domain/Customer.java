@@ -7,8 +7,9 @@ import java.util.Date;
 @Data
 public class Customer {
     private Integer id;
-    private String first_name;
-    private String last_name;
-    private Date updated_at;
-    private Date created_at;
+    private String firstName;
+    private String lastName;
+    private User user;
+    private Date updatedAt;
+    private Date createdAt;
 }

@@ -25,8 +25,8 @@ public class UserPersistence implements IUserRepository {
     @Override
     public User createUser(User user) {
         UserEntity newUserEntity = userJpaRepository.save(userPersistenceMapper.toUserEntity(user));
-        newUserEntity.setCreated_at(new Date());
-        newUserEntity.setUpdated_at(new Date());
+        newUserEntity.setCreatedAt(new Date());
+        newUserEntity.setUpdatedAt(new Date());
         return userPersistenceMapper.toUser(newUserEntity);
     }
 
@@ -54,6 +54,11 @@ public class UserPersistence implements IUserRepository {
     @Override
     public void deleteUserById(Integer id) {
         userJpaRepository.deleteById(id);
+    }
+
+    @Override
+    public void deleteUser(User user) {
+        userJpaRepository.delete(userPersistenceMapper.toUserEntity(user));
     }
 
     @Override

@@ -67,6 +67,9 @@ public class UserService {
         return passwordEncoder.encode(password);
     }
 
+    protected void deleteUser(User user){
+        userRepository.deleteUser(user);
+    }
 
     private User fromCreateUserRequestToUser(CreateUserRequest request) throws Exception {
         Role role = roleService.getRoleById(request.getRolId()).orElseThrow(() -> new InvalidArgumentException("Role ID " + request.getRolId()));
