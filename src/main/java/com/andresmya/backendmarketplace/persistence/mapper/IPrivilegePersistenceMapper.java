@@ -2,6 +2,7 @@ package com.andresmya.backendmarketplace.persistence.mapper;
 
 import com.andresmya.backendmarketplace.domain.Privilege;
 import com.andresmya.backendmarketplace.persistence.entity.PrivilegeEntity;
+import org.mapstruct.InheritInverseConfiguration;
 import org.mapstruct.Mapper;
 
 import java.util.List;
@@ -10,4 +11,7 @@ import java.util.List;
 public interface IPrivilegePersistenceMapper {
     Privilege toPrivilege(PrivilegeEntity privilegeEntity);
     List<Privilege> toPrivileges(List<PrivilegeEntity> privilegeEntities);
+
+    @InheritInverseConfiguration
+    PrivilegeEntity toPrivilegeEntity(Privilege privilege);
 }

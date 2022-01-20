@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -25,8 +26,10 @@ public class UserEntity {
     private String email;
     private String password;
     @ManyToOne
-    @JoinColumn(name = "role_id", insertable = false, updatable = false)
+    @JoinColumn(name = "role_id")
     private RoleEntity role;
+    @Column(insertable = false, updatable = false)
     private Date updated_at;
+    @Column(insertable = false, updatable = false)
     private Date created_at;
 }
