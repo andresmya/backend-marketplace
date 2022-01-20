@@ -2,7 +2,7 @@ package com.andresmya.backendmarketplace.web.controller;
 
 import com.andresmya.backendmarketplace.domain.dto.request.AuthenticationRequest;
 import com.andresmya.backendmarketplace.domain.dto.request.RecoveryPasswordRequest;
-import com.andresmya.backendmarketplace.domain.dto.request.UpdatePasswordRequest;
+import com.andresmya.backendmarketplace.domain.dto.request.update.UpdatePasswordRequest;
 import com.andresmya.backendmarketplace.domain.dto.response.AuthenticationResponse;
 import com.andresmya.backendmarketplace.domain.service.AuthenticationService;
 import com.andresmya.backendmarketplace.domain.service.RecoveryPasswordService;

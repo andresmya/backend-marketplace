@@ -1,7 +1,7 @@
 package com.andresmya.backendmarketplace.web.controller;
 
 import com.andresmya.backendmarketplace.domain.User;
-import com.andresmya.backendmarketplace.domain.dto.request.CreateUserRequest;
+import com.andresmya.backendmarketplace.domain.dto.request.create.CreateUserRequest;
 import com.andresmya.backendmarketplace.domain.service.RoleService;
 import com.andresmya.backendmarketplace.domain.service.UserService;
 import com.andresmya.backendmarketplace.exception.NotFoundException;

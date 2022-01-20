@@ -2,13 +2,12 @@ package com.andresmya.backendmarketplace.domain.service;
 
 import com.andresmya.backendmarketplace.domain.Role;
 import com.andresmya.backendmarketplace.domain.User;
-import com.andresmya.backendmarketplace.domain.dto.request.CreateUserRequest;
+import com.andresmya.backendmarketplace.domain.dto.request.create.CreateUserRequest;
 import com.andresmya.backendmarketplace.domain.mapper.IUserMapper;
 import com.andresmya.backendmarketplace.domain.repository.IUserRepository;
 import com.andresmya.backendmarketplace.exception.InvalidArgumentException;
 import com.andresmya.backendmarketplace.exception.NotFoundException;
 import com.andresmya.backendmarketplace.util.PasswordUtil;
-import org.springframework.beans.NotReadablePropertyException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;

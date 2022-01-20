@@ -1,7 +1,7 @@
 package com.andresmya.backendmarketplace.domain.service;
 
 import com.andresmya.backendmarketplace.domain.dto.request.RecoveryPasswordRequest;
-import com.andresmya.backendmarketplace.domain.dto.request.UpdatePasswordRequest;
+import com.andresmya.backendmarketplace.domain.dto.request.update.UpdatePasswordRequest;
 import org.springframework.stereotype.Service;
 
 @Service
