@@ -10,8 +10,9 @@ import java.util.Optional;
 public interface IProductRepository {
     Product createProduct(Product product);
     Product updateProduct(Product product);
-    Optional<Product> getProductById(Integer id);
-    Optional<Page<Product>> getProductsByCategoryId(Integer categoryId, Pageable pageable);
+    Optional<Product> getProductById(Long id);
+    Page<Product> getProductsByCategoryId(Integer categoryId, Pageable pageable);
+    Page<Product> getProductsByVendorId(Integer vendorId, Pageable pageable);
     Page<Product> getAllProducts(Pageable pageable);
-    void deleteProductById(Integer id);
+    void deleteProductById(Long id);
 }

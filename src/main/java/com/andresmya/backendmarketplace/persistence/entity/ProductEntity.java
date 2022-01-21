@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -28,11 +29,13 @@ public class ProductEntity {
     private BigDecimal price;
     private Integer stock;
     @ManyToOne
-    @JoinColumn(name = "category_id", insertable = false, updatable = false)
+    @JoinColumn(name = "category_id")
     private CategoryEntity category;
     @ManyToOne
-    @JoinColumn(name = "vendor_id", insertable = false, updatable = false)
+    @JoinColumn(name = "vendor_id")
     private VendorEntity vendor;
-    private Date updated_at;
-    private Date created_at;
+    @Column(insertable = false, updatable = false)
+    private Date updatedAt;
+    @Column(insertable = false, updatable = false)
+    private Date createdAt;
 }

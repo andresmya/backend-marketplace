@@ -14,6 +14,6 @@ public class Product {
     private Integer stock;
     private Category category;
     private Vendor vendor;
-    private Date updated_at;
-    private Date created_at;
+    private Date updatedAt;
+    private Date createdAt;
 }
