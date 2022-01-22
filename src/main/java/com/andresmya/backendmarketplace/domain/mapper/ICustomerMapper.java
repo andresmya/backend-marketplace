@@ -1,7 +1,10 @@
 package com.andresmya.backendmarketplace.domain.mapper;
 
+import com.andresmya.backendmarketplace.domain.City;
 import com.andresmya.backendmarketplace.domain.Customer;
+import com.andresmya.backendmarketplace.domain.CustomerAddress;
 import com.andresmya.backendmarketplace.domain.User;
+import com.andresmya.backendmarketplace.domain.dto.request.create.CreateCustomerAddressRequest;
 import com.andresmya.backendmarketplace.domain.dto.request.create.CreateCustomerRequest;
 import com.andresmya.backendmarketplace.domain.dto.request.create.CreateUserRequest;
 import com.andresmya.backendmarketplace.domain.dto.request.update.UpdateCustomerRequest;
@@ -22,5 +25,11 @@ public interface ICustomerMapper {
             @Mapping(target = "rolId", constant = "3")
     })
     CreateUserRequest toCreateUserRequest(CreateCustomerRequest request);
+
+    @Mappings({
+            @Mapping(target = "id", ignore = true)
+    })
+    CustomerAddress toCustomerAddress(CreateCustomerAddressRequest request, City city, Integer customerId);
+
 
 }

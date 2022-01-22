@@ -16,6 +16,6 @@ public class CityEntity{
     private Integer id;
     private String name;
     @ManyToOne
-    @JoinColumn(name = "state_id", insertable = false, updatable = false)
+    @JoinColumn(name = "state_id")
     private StateEntity state;
 }

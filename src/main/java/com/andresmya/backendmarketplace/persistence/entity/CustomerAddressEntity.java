@@ -21,9 +21,10 @@ public class CustomerAddressEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+    private Integer customerId;
     private String address;
     private String zipCode;
     @ManyToOne
-    @JoinColumn(name = "city_id", insertable = false, updatable = false)
+    @JoinColumn(name = "city_id")
     private CityEntity city;
 }

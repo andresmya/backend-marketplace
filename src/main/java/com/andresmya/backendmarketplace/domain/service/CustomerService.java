@@ -62,6 +62,10 @@ public class CustomerService {
         return customerRepository.getCustomerByUserId(userId);
     }
 
+    protected boolean existsById(Integer id){
+        return customerRepository.existsById(id);
+    }
+
     private void checkArguments(String firstName, String lastName) throws InvalidArgumentException {
        if (
                firstName == null ||
