@@ -54,6 +54,10 @@ public class VendorService {
         userService.deleteUser(user);
     }
 
+    protected boolean existsById(Integer vendorId){
+        return vendorRepository.existsById(vendorId);
+    }
+
     private void checkArguments(String name) throws InvalidArgumentException {
         if (
                 name == null || name.isEmpty()

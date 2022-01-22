@@ -9,5 +9,5 @@ public class Order {
     private Long id;
     private Integer customerId;
     private CustomerAddress customerAddress;
-    private Date created_at;
+    private Date createdAt;
 }

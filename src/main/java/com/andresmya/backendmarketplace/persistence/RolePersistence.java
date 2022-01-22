@@ -10,7 +10,7 @@ import org.springframework.stereotype.Repository;
 import java.util.Optional;
 
 @Repository
-public class RoleRepository implements IRoleRepository {
+public class RolePersistence implements IRoleRepository {
 
     @Autowired
     private IRoleJpaRepository roleJpaRepository;

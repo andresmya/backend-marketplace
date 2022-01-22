@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public class LocationPersistence implements ILocationRepository {
@@ -31,5 +32,10 @@ public class LocationPersistence implements ILocationRepository {
     @Override
     public List<City> getAllCitiesByStateId(Integer id) {
         return locationMapper.toCities(cityJpaRepository.findByStateId(id));
+    }
+
+    @Override
+    public Optional<City> getCityById(Integer id) {
+        return cityJpaRepository.findById(id).map(cityEntity -> locationMapper.toCity(cityEntity));
     }
 }

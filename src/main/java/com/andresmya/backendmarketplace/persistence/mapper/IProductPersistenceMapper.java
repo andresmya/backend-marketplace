@@ -14,4 +14,5 @@ public interface IProductPersistenceMapper {
 
     @InheritInverseConfiguration
     ProductEntity toProductEntity(Product product);
+    List<ProductEntity> toProductEntities(List<Product> products);
 }

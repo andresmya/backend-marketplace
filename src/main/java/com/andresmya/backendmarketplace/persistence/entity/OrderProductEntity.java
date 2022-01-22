@@ -22,8 +22,9 @@ public class OrderProductEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    private Long orderId;
     @ManyToOne
-    @JoinColumn(name = "product_id", insertable = false, updatable = false)
+    @JoinColumn(name = "product_id")
     private ProductEntity product;
     private BigDecimal price;
     private Integer quantity;

@@ -2,6 +2,7 @@ package com.andresmya.backendmarketplace.persistence.mapper;
 
 import com.andresmya.backendmarketplace.domain.CustomerAddress;
 import com.andresmya.backendmarketplace.persistence.entity.CustomerAddressEntity;
+import org.mapstruct.InheritInverseConfiguration;
 import org.mapstruct.Mapper;
 
 import java.util.List;
@@ -10,4 +11,7 @@ import java.util.List;
 public interface ICustomerAddressPersistenceMapper {
     CustomerAddress toCustomerAddress(CustomerAddressEntity customerAddressEntity);
     List<CustomerAddress> toCustomerAddresses(List<CustomerAddressEntity> customerAddressEntities);
+
+    @InheritInverseConfiguration
+    CustomerAddressEntity toCustomerAddressEntity(CustomerAddress customerAddress);
 }

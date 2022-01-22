@@ -10,6 +10,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -46,6 +47,11 @@ public class ProductController {
     @PatchMapping("/{id}")
     public ResponseEntity<Product> updateProductById(@PathVariable("id") Long id, @RequestBody UpdateProductRequest request) throws Exception{
         return new ResponseEntity<>(productService.updateProduct(id, request), HttpStatus.OK);
+    }
+
+    @DeleteMapping("/{id}")
+    public void deleteProductById(@PathVariable("id") Long id) throws Exception {
+        productService.deleteProductById(id);
     }
 
 }

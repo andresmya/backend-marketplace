@@ -4,6 +4,7 @@ import com.andresmya.backendmarketplace.domain.City;
 import com.andresmya.backendmarketplace.domain.State;
 import com.andresmya.backendmarketplace.persistence.entity.CityEntity;
 import com.andresmya.backendmarketplace.persistence.entity.StateEntity;
+import org.mapstruct.InheritInverseConfiguration;
 import org.mapstruct.Mapper;
 
 import java.util.List;
@@ -14,4 +15,7 @@ public interface ILocationPersistenceMapper {
 
     City toCity(CityEntity city);
     List<City> toCities(List<CityEntity> cityEntities);
+
+    @InheritInverseConfiguration
+    CityEntity toCityEntity(City city);
 }

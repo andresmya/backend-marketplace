@@ -6,4 +6,7 @@ import java.util.List;
 
 public interface IOrderProductRepository {
     List<OrderProduct> getProductsByOrderId(Long orderId);
+    List<OrderProduct> saveOrderProducts(List<OrderProduct> orderProductList);
+    void deleteByList(List<OrderProduct> orderProductList);
+
 }

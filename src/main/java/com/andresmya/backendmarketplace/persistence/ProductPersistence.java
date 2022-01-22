@@ -5,12 +5,14 @@ import com.andresmya.backendmarketplace.domain.repository.IProductRepository;
 import com.andresmya.backendmarketplace.persistence.entity.ProductEntity;
 import com.andresmya.backendmarketplace.persistence.jpa.repository.IProductJpaRepository;
 import com.andresmya.backendmarketplace.persistence.mapper.IProductPersistenceMapper;
+import org.apache.catalina.LifecycleState;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Repository;
 
 import java.util.Date;
+import java.util.List;
 import java.util.Optional;
 
 @Repository
@@ -37,6 +39,12 @@ public class ProductPersistence implements IProductRepository {
     }
 
     @Override
+    public List<Product> updateAllByList(List<Product> products) {
+        List<ProductEntity> productEntities = productJpaRepository.saveAll(productMapper.toProductEntities(products));
+        return productMapper.toProducts(productEntities);
+    }
+
+    @Override
     public Optional<Product> getProductById(Long id) {
         return productJpaRepository.findById(id).map(productEntity -> productMapper.toProduct(productEntity));
 
@@ -58,6 +66,11 @@ public class ProductPersistence implements IProductRepository {
     public Page<Product> getAllProducts(Pageable pageable) {
         Page<ProductEntity> productEntityPage = productJpaRepository.findAll(pageable);
         return productEntityPage.map(productEntity -> productMapper.toProduct(productEntity));
+    }
+
+    @Override
+    public boolean existsById(Long id){
+        return  productJpaRepository.existsById(id);
     }
 
     @Override

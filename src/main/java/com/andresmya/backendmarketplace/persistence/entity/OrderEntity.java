@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -24,7 +25,8 @@ public class OrderEntity {
     private Long id;
     private Integer customerId;
     @ManyToOne
-    @JoinColumn(name = "customer_address_id", insertable = false, updatable = false)
+    @JoinColumn(name = "customer_address_id")
     private CustomerAddressEntity customerAddress;
-    private Date created_at;
+    @Column(insertable = false, updatable = false)
+    private Date createdAt;
 }

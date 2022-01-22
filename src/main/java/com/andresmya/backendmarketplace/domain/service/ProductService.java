@@ -57,12 +57,22 @@ public class ProductService {
     }
 
     public Product updateProduct(Long id, UpdateProductRequest request) throws Exception{
+        if (!productRepository.existsById(id)) throw new NotFoundException("Product ID " + id);
         checkUpdateArguments(request);
         Product product = getProductById(id);
         product.setDescription(request.getDescription().toUpperCase());
         product.setPrice(request.getPrice());
         product.setStock(request.getStock());
         return productRepository.updateProduct(product);
+    }
+
+    public void deleteProductById(Long id) throws Exception{
+        if (!productRepository.existsById(id)) throw new NotFoundException("Product ID " + id);
+        productRepository.deleteProductById(id);
+    }
+
+    protected List<Product> updateAllProductsByList(List<Product> products){
+        return productRepository.updateAllByList(products);
     }
 
     private void checkCreateArguments(CreateProductRequest request) throws InvalidArgumentException {
