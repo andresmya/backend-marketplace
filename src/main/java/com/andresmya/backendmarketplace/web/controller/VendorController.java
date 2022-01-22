@@ -1,5 +1,6 @@
 package com.andresmya.backendmarketplace.web.controller;
 
+import com.andresmya.backendmarketplace.domain.Product;
 import com.andresmya.backendmarketplace.domain.Vendor;
 import com.andresmya.backendmarketplace.domain.dto.request.create.CreateVendorRequest;
 import com.andresmya.backendmarketplace.domain.dto.request.update.UpdateVendorRequest;
@@ -31,6 +32,9 @@ public class VendorController {
     @Autowired
     private VendorService vendorService;
 
+    @Autowired
+    private ProductController productController;
+
     @GetMapping()
     public ResponseEntity<Page<Vendor>> getVendors(@RequestParam("page") int page, @RequestParam("size")int size){
         Pageable pageable = PageRequest.of(page, size);
@@ -55,5 +59,13 @@ public class VendorController {
     @DeleteMapping("/{vendorId}")
     public void deleteVendor(@PathVariable("vendorId") Integer vendorId) throws NotFoundException {
         vendorService.deleteVendorById(vendorId);
+    }
+
+    @GetMapping("/{vendorId}/products")
+    public ResponseEntity<Page<Product>> getProductsByVendorId(@RequestParam("page") int page,
+                                                                 @RequestParam("size")int size,
+                                                                 @PathVariable("vendorId") Integer vendorId){
+        Pageable pageable = PageRequest.of(page, size);
+        return new ResponseEntity<>(productController.getProductsByVendorId(pageable, vendorId), HttpStatus.OK);
     }
 }

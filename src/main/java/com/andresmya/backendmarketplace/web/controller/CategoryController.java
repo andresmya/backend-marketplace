@@ -1,6 +1,7 @@
 package com.andresmya.backendmarketplace.web.controller;
 
 import com.andresmya.backendmarketplace.domain.Category;
+import com.andresmya.backendmarketplace.domain.Product;
 import com.andresmya.backendmarketplace.domain.dto.request.create.CreateCategoryRequest;
 import com.andresmya.backendmarketplace.domain.dto.request.update.UpdateCategoryRequest;
 import com.andresmya.backendmarketplace.domain.service.CategoryService;
@@ -8,6 +9,9 @@ import com.andresmya.backendmarketplace.domain.service.RoleService;
 import com.andresmya.backendmarketplace.exception.InvalidArgumentException;
 import com.andresmya.backendmarketplace.exception.NotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -18,6 +22,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -28,6 +33,9 @@ public class CategoryController {
 
     @Autowired
     private CategoryService categoryService;
+
+    @Autowired
+    private ProductController productController;
 
     @GetMapping
     public ResponseEntity<List<Category>> getAllCategories(){
@@ -50,6 +58,14 @@ public class CategoryController {
     @DeleteMapping("/{id}")
     public void deleteCategoryById(@PathVariable("id") Integer id) throws NotFoundException {
         categoryService.deleteCategoryById(id);
+    }
+
+    @GetMapping("/{id}/products")
+    public ResponseEntity<Page<Product>> getProductsByCategoryId(@RequestParam("page") int page,
+                                                                @RequestParam("size")int size,
+                                                                 @PathVariable("id") Integer id){
+        Pageable pageable = PageRequest.of(page, size);
+        return new ResponseEntity<>(productController.getProductsByCategoryId(pageable, id), HttpStatus.OK);
     }
 
 }

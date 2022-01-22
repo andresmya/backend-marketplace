@@ -71,6 +71,14 @@ public class ProductService {
         productRepository.deleteProductById(id);
     }
 
+    public Page<Product> getProductsByCategoryId(Pageable pageable, Integer categoryId){
+        return productRepository.getProductsByCategoryId(categoryId, pageable);
+    }
+
+    public Page<Product> getProductsByVendorId(Pageable pageable, Integer categoryId){
+        return productRepository.getProductsByVendorId(categoryId, pageable);
+    }
+
     protected List<Product> updateAllProductsByList(List<Product> products){
         return productRepository.updateAllByList(products);
     }
