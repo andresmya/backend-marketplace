@@ -15,7 +15,8 @@ public class RoleService {
 
     public static final String HAS_ROLE_ADMIN = "hasRole('ROLE_ADMIN')";
     public static final String HAS_ROLE_VENDOR = "hasRole('ROLE_VENDOR')";
-    public static final String HAS_ROLE_CUSTOMER = "hasRole('ROLE_CUSTOMER')";
+    public static final String HAS_ROLE_ADMIN_OR_VENDOR = "hasAnyRole('ROLE_ADMIN', 'ROLE_VENDOR')";
+    public static final String HAS_ROLE_ADMIN_OR_CUSTOMER = "hasAnyRole('ROLE_CUSTOMER', 'ROLE_CUSTOMER')";
 
     protected Optional<Role> getRoleById(Integer id){
         return roleRepository.getRoleById(id);
