@@ -4,6 +4,7 @@ import com.andresmya.backendmarketplace.domain.Product;
 import com.andresmya.backendmarketplace.domain.Vendor;
 import com.andresmya.backendmarketplace.domain.dto.request.create.CreateVendorRequest;
 import com.andresmya.backendmarketplace.domain.dto.request.update.UpdateVendorRequest;
+import com.andresmya.backendmarketplace.domain.service.RoleService;
 import com.andresmya.backendmarketplace.domain.service.VendorService;
 import com.andresmya.backendmarketplace.exception.InvalidArgumentException;
 import com.andresmya.backendmarketplace.exception.NotFoundException;
@@ -13,6 +14,8 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
@@ -41,21 +44,27 @@ public class VendorController {
         return new ResponseEntity<Page<Vendor>>(vendorService.getVendors(pageable), HttpStatus.OK);
     }
 
+    @PreAuthorize(RoleService.HAS_ROLE_ADMIN)
     @PostMapping()
     public ResponseEntity<Vendor> createVendor(@RequestBody CreateVendorRequest request) throws Exception {
         return new ResponseEntity<Vendor>(vendorService.createVendor(request), HttpStatus.CREATED);
     }
 
+    @PreAuthorize(RoleService.HAS_ROLE_ADMIN_OR_VENDOR)
     @GetMapping("/{vendorId}")
     public ResponseEntity<Vendor> getVendorById(@PathVariable("vendorId") Integer vendorId) throws NotFoundException {
         return new ResponseEntity<Vendor>(vendorService.getVendorById(vendorId), HttpStatus.OK);
     }
 
+    @PreAuthorize(RoleService.HAS_ROLE_ADMIN_OR_VENDOR)
     @PatchMapping("/{vendorId}")
-    public ResponseEntity<Vendor> updateVendor(@PathVariable("vendorId") Integer vendorId, @RequestBody UpdateVendorRequest request) throws Exception {
+    public ResponseEntity<Vendor> updateVendor(@PathVariable("vendorId") Integer vendorId,
+                                               @RequestBody UpdateVendorRequest request,
+                                               Authentication authentication) throws Exception {
         return new ResponseEntity<Vendor>(vendorService.updateVendor(vendorId, request), HttpStatus.OK);
     }
 
+    @PreAuthorize(RoleService.HAS_ROLE_ADMIN_OR_VENDOR)
     @DeleteMapping("/{vendorId}")
     public void deleteVendor(@PathVariable("vendorId") Integer vendorId) throws NotFoundException {
         vendorService.deleteVendorById(vendorId);

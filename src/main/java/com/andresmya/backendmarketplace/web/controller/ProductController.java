@@ -4,12 +4,14 @@ import com.andresmya.backendmarketplace.domain.Product;
 import com.andresmya.backendmarketplace.domain.dto.request.create.CreateProductRequest;
 import com.andresmya.backendmarketplace.domain.dto.request.update.UpdateProductRequest;
 import com.andresmya.backendmarketplace.domain.service.ProductService;
+import com.andresmya.backendmarketplace.domain.service.RoleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
@@ -36,6 +38,7 @@ public class ProductController {
         return new ResponseEntity<>(productService.getAllProducts(pageable), HttpStatus.OK);
     }
 
+    @PreAuthorize(RoleService.HAS_ROLE_ADMIN_OR_VENDOR)
     @PostMapping
     public ResponseEntity<Product> createProduct(@RequestBody CreateProductRequest request) throws Exception {
         return new ResponseEntity<>(productService.createProduct(request), HttpStatus.CREATED);
@@ -46,11 +49,13 @@ public class ProductController {
         return new ResponseEntity<>(productService.getProductById(id), HttpStatus.OK);
     }
 
+    @PreAuthorize(RoleService.HAS_ROLE_ADMIN_OR_VENDOR)
     @PatchMapping("/{id}")
     public ResponseEntity<Product> updateProductById(@PathVariable("id") Long id, @RequestBody UpdateProductRequest request) throws Exception{
         return new ResponseEntity<>(productService.updateProduct(id, request), HttpStatus.OK);
     }
 
+    @PreAuthorize(RoleService.HAS_ROLE_ADMIN_OR_VENDOR)
     @DeleteMapping("/{id}")
     public void deleteProductById(@PathVariable("id") Long id) throws Exception {
         productService.deleteProductById(id);

@@ -4,7 +4,9 @@ import com.andresmya.backendmarketplace.domain.CustomerAddress;
 import com.andresmya.backendmarketplace.domain.dto.request.create.CreateCustomerAddressRequest;
 import com.andresmya.backendmarketplace.domain.dto.request.update.UpdateCustomerAddressRequest;
 import com.andresmya.backendmarketplace.domain.service.CustomerAddressService;
+import com.andresmya.backendmarketplace.domain.service.RoleService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
@@ -16,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
+@PreAuthorize(RoleService.HAS_ROLE_ADMIN_OR_CUSTOMER)
 @RestController
 @RequestMapping("/customers")
 public class CustomerAddressController {
