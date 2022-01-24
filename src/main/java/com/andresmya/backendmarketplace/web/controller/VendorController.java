@@ -6,8 +6,7 @@ import com.andresmya.backendmarketplace.domain.dto.request.create.CreateVendorRe
 import com.andresmya.backendmarketplace.domain.dto.request.update.UpdateVendorRequest;
 import com.andresmya.backendmarketplace.domain.service.RoleService;
 import com.andresmya.backendmarketplace.domain.service.VendorService;
-import com.andresmya.backendmarketplace.exception.InvalidArgumentException;
-import com.andresmya.backendmarketplace.exception.NotFoundException;
+import com.andresmya.backendmarketplace.domain.exception.NotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -25,8 +24,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-
-import java.util.List;
 
 @RestController
 @RequestMapping("/vendors")

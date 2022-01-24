@@ -5,7 +5,7 @@ import com.andresmya.backendmarketplace.domain.dto.request.create.CreateCustomer
 import com.andresmya.backendmarketplace.domain.dto.request.update.UpdateCustomerRequest;
 import com.andresmya.backendmarketplace.domain.service.CustomerService;
 import com.andresmya.backendmarketplace.domain.service.RoleService;
-import com.andresmya.backendmarketplace.exception.NotFoundException;
+import com.andresmya.backendmarketplace.domain.exception.NotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;

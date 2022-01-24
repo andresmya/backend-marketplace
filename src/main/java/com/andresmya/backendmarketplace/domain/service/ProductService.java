@@ -4,8 +4,8 @@ import com.andresmya.backendmarketplace.domain.Product;
 import com.andresmya.backendmarketplace.domain.dto.request.create.CreateProductRequest;
 import com.andresmya.backendmarketplace.domain.dto.request.update.UpdateProductRequest;
 import com.andresmya.backendmarketplace.domain.mapper.IProductMapper;
-import com.andresmya.backendmarketplace.exception.InvalidArgumentException;
-import com.andresmya.backendmarketplace.exception.NotFoundException;
+import com.andresmya.backendmarketplace.domain.exception.InvalidArgumentException;
+import com.andresmya.backendmarketplace.domain.exception.NotFoundException;
 import com.andresmya.backendmarketplace.persistence.ProductPersistence;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -13,7 +13,6 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service

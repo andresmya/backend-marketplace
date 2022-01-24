@@ -1,11 +1,11 @@
 package com.andresmya.backendmarketplace.web.controller;
 
 import com.andresmya.backendmarketplace.domain.dto.request.AuthenticationRequest;
-import com.andresmya.backendmarketplace.domain.dto.request.RecoveryPasswordRequest;
+import com.andresmya.backendmarketplace.domain.dto.request.ResetPasswordRequest;
 import com.andresmya.backendmarketplace.domain.dto.request.update.UpdatePasswordRequest;
 import com.andresmya.backendmarketplace.domain.dto.response.AuthenticationResponse;
 import com.andresmya.backendmarketplace.domain.service.AuthenticationService;
-import com.andresmya.backendmarketplace.domain.service.RecoveryPasswordService;
+import com.andresmya.backendmarketplace.domain.service.ResetPasswordService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -25,7 +25,7 @@ public class AuthenticationController {
     private AuthenticationService authenticationService;
 
     @Autowired
-    private RecoveryPasswordService recoveryPasswordService;
+    private ResetPasswordService resetPasswordService;
 
     @PostMapping
     public ResponseEntity<AuthenticationResponse> authenticate(@RequestBody AuthenticationRequest request) throws BadCredentialsException {
@@ -33,13 +33,13 @@ public class AuthenticationController {
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
-    @GetMapping("/recovery-password")
-    public void requestRecoveryPassword(@RequestBody RecoveryPasswordRequest request){
-        recoveryPasswordService.requestRecoveryPassword(request);
+    @GetMapping("/reset-password")
+    public void requestRecoveryPassword(@RequestBody ResetPasswordRequest request) throws Exception{
+        resetPasswordService.requestRecoveryPassword(request);
     }
 
-    @PatchMapping("/recovery-password")
-    public void updatePassword(@RequestBody UpdatePasswordRequest request){
-        recoveryPasswordService.updatePassword(request);
+    @PatchMapping("/reset-password")
+    public void updatePassword(@RequestBody UpdatePasswordRequest request) throws Exception{
+        resetPasswordService.updatePassword(request);
     }
 }

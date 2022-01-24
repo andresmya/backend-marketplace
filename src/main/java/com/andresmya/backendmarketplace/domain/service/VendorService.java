@@ -6,8 +6,8 @@ import com.andresmya.backendmarketplace.domain.dto.request.create.CreateVendorRe
 import com.andresmya.backendmarketplace.domain.dto.request.update.UpdateVendorRequest;
 import com.andresmya.backendmarketplace.domain.mapper.IVendorMapper;
 import com.andresmya.backendmarketplace.domain.repository.IVendorRepository;
-import com.andresmya.backendmarketplace.exception.InvalidArgumentException;
-import com.andresmya.backendmarketplace.exception.NotFoundException;
+import com.andresmya.backendmarketplace.domain.exception.InvalidArgumentException;
+import com.andresmya.backendmarketplace.domain.exception.NotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;

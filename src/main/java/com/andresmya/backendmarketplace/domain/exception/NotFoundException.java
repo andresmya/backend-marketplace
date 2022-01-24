@@ -1,4 +1,4 @@
-package com.andresmya.backendmarketplace.exception;
+package com.andresmya.backendmarketplace.domain.exception;
 
 public class NotFoundException extends Exception{
 

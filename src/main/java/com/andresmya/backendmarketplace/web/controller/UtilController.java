@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-@PreAuthorize(RoleService.HAS_ROLE_ADMIN)
 @RestController
 @RequestMapping("/utils")
 public class UtilController {
@@ -24,6 +23,7 @@ public class UtilController {
     @RequestMapping(value = "/health",method = RequestMethod.HEAD)
     public void apiHealth(){}
 
+    @PreAuthorize(RoleService.HAS_ROLE_ADMIN)
     @GetMapping("/memory-stats")
     public ResponseEntity<MemoryStatsResponse> getMemoryStats() {
         return new ResponseEntity<>(utilService.getMemoryStats(), HttpStatus.OK);

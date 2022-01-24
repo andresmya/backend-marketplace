@@ -1,4 +1,4 @@
-package com.andresmya.backendmarketplace.exception;
+package com.andresmya.backendmarketplace.domain.exception;
 
 public class AssociatedRecordDeleteException extends Exception{
     public AssociatedRecordDeleteException(String resource, String associatedRecord){

@@ -6,8 +6,8 @@ import com.andresmya.backendmarketplace.domain.dto.request.create.CreateCustomer
 import com.andresmya.backendmarketplace.domain.dto.request.update.UpdateCustomerAddressRequest;
 import com.andresmya.backendmarketplace.domain.mapper.ICustomerMapper;
 import com.andresmya.backendmarketplace.domain.repository.ICustomerAddressRepository;
-import com.andresmya.backendmarketplace.exception.InvalidArgumentException;
-import com.andresmya.backendmarketplace.exception.NotFoundException;
+import com.andresmya.backendmarketplace.domain.exception.InvalidArgumentException;
+import com.andresmya.backendmarketplace.domain.exception.NotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

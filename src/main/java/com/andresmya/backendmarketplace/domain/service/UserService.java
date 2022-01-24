@@ -5,9 +5,8 @@ import com.andresmya.backendmarketplace.domain.User;
 import com.andresmya.backendmarketplace.domain.dto.request.create.CreateUserRequest;
 import com.andresmya.backendmarketplace.domain.mapper.IUserMapper;
 import com.andresmya.backendmarketplace.domain.repository.IUserRepository;
-import com.andresmya.backendmarketplace.exception.InvalidArgumentException;
-import com.andresmya.backendmarketplace.exception.NotFoundException;
-import com.andresmya.backendmarketplace.util.PasswordUtil;
+import com.andresmya.backendmarketplace.domain.exception.InvalidArgumentException;
+import com.andresmya.backendmarketplace.domain.exception.NotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -15,6 +14,8 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 @Service
 public class UserService {
@@ -41,10 +42,6 @@ public class UserService {
         userRepository.deleteUserById(userId);
     }
 
-    public User updateUser(Integer userId) {
-        return null;
-    }
-
     public User createUser(CreateUserRequest request) throws Exception {
         checkIfArgumentsAreValid(request.getEmail(), request.getPassword());
         User user = fromCreateUserRequestToUser(request);
@@ -53,6 +50,10 @@ public class UserService {
 
     public Page<User> getUsers(Pageable pageable) {
         return userRepository.getAllUsers(pageable);
+    }
+
+    protected User updateUser(User user) {
+        return userRepository.updateUser(user);
     }
 
     protected Optional<User> getOptionalUserById(Integer id) {
@@ -71,6 +72,13 @@ public class UserService {
         userRepository.deleteUser(user);
     }
 
+    protected boolean passwordIsStrong(String password){
+        String pattern = "^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.{8,})";
+        Pattern p = Pattern.compile(pattern);
+        Matcher m = p.matcher(password);
+        return m.find();
+    }
+
     private User fromCreateUserRequestToUser(CreateUserRequest request) throws Exception {
         Role role = roleService.getRoleById(request.getRolId()).orElseThrow(() -> new InvalidArgumentException("Role ID " + request.getRolId()));
         request.setPassword(passwordEncoder.encode(request.getPassword()));
@@ -85,7 +93,7 @@ public class UserService {
         String invalidArgumentMessage;
         if (alreadyExistsByEmail(email)) {
             invalidArgumentMessage = "Email " + email + " already used";
-        } else if (!PasswordUtil.passwordIsStrong(password)) {
+        } else if (passwordIsStrong(password)) {
             invalidArgumentMessage = "Weak password";
         } else {
             return;

@@ -5,8 +5,8 @@ import com.andresmya.backendmarketplace.domain.dto.request.create.CreateCategory
 import com.andresmya.backendmarketplace.domain.dto.request.update.UpdateCategoryRequest;
 import com.andresmya.backendmarketplace.domain.mapper.ICategoryMapper;
 import com.andresmya.backendmarketplace.domain.repository.ICategoryRepository;
-import com.andresmya.backendmarketplace.exception.InvalidArgumentException;
-import com.andresmya.backendmarketplace.exception.NotFoundException;
+import com.andresmya.backendmarketplace.domain.exception.InvalidArgumentException;
+import com.andresmya.backendmarketplace.domain.exception.NotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
